@@ -11,7 +11,7 @@ pipeline {
                 script {
                     docker.image('jmeter:latest').inside {
                         sh '''
-                            jmeter -n -t /jmeter/test.jmx -l /jmeter/results/results.jtl \
+                            jmeter -n -t /jmeter-scripts/Facconable.jmx -l /jmeter/results/results.jtl \
                             -Jjmeter.save.saveservice.output_format=xml \
                             -e -o /jmeter/results/report
                         '''
