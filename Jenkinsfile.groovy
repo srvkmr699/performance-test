@@ -11,9 +11,9 @@ pipeline {
                 script {
                     docker.image('jmeter:latest').inside {
                         sh '''
-                            jmeter -n -t /jmeter-scripts/Facconable.jmx -l /jmeter/results/results.jtl \
+                            jmeter -n -t /var/jenkins_home/workspace/backend-job-jmeter/jmeter-scripts/Facconable.jmx -l /var/jenkins_home/workspace/backend-job-jmeter/jmeter/results/results.jtl \
                             -Jjmeter.save.saveservice.output_format=xml \
-                            -e -o /jmeter/results/report
+                            -e -o /var/jenkins_home/workspace/backend-job-jmeter/jmeter/results/report
                         '''
                     }
                 }
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Publish Results') {
             steps {
-                perfReport filterRegex: 'jmeter/results/results.jtl'
+                perfReport sourceDataFiles: 'jmeter/results/results.jtl', filterRegex: 'jmeter/results/results.jtl'
             }
         }
         stage('Send Data to InfluxDB') {
