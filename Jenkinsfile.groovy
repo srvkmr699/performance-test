@@ -11,9 +11,9 @@ pipeline {
                 script {
                     docker.image('jmeter:latest').inside {
                         sh '''
-                            jmeter -n -t /var/jenkins_home/workspace/backend-job-jmeter/jmeter-scripts/Facconable.jmx -l /var/jenkins_home/workspace/backend-job-jmeter/jmeter/results/results.jtl \
+                            jmeter -n -t /var/jenkins_home/workspace/backend_job_jmeter/jmeter_scripts/Facconable.jmx -l /var/jenkins_home/workspace/backend_job_jmeter/jmeter/results/results.jtl \
                             -Jjmeter.save.saveservice.output_format=xml \
-                            -e -o /var/jenkins_home/workspace/backend-job-jmeter/jmeter/results/report
+                            -e -o /var/jenkins_home/workspace/backend_job_jmeter/jmeter/results/report
                         '''
                     }
                 }
