@@ -32,13 +32,6 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
 
-  jmeter:
-    image: justb4/jmeter:5.5
-    volumes:
-      - ./jmeter:/jmeter
-    depends_on:
-      - influxdb
-
 volumes:
   jenkins_home:
   influxdb_data:
